@@ -1,0 +1,46 @@
+@media screen and (min-width: 768px){
+
+
+.backgroundimg {
+    position: absolute;
+    z-index: -1;
+}
+
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .whole {
+        margin: 40px;
+        background-color: white;
+    }
+
+    .carpic {
+        width: 90%;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 70px 1fr;
+    }
+
+    .reviews {
+        grid-column: 1;
+    }
+
+    .upgrades {
+        grid-column: 2;
+    }
+
+    h1.reviews, h1.upgrades {
+        grid-row: 1;
+    }
+
+
+    ul.upgrades, div.upgrades {
+        grid-row: 2;
+    }
+
+}
