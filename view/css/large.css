@@ -44,3 +44,17 @@
     }
 
 }
+
+/* LOGIN */
+
+input {
+    max-width: 200px;
+}
+
+.container button {
+    max-width: 300px;
+}
+
+.container input {
+    display: block;
+}
