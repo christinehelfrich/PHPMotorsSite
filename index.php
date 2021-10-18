@@ -37,13 +37,16 @@ $action = filter_input(INPUT_POST, 'action');
   break;
 
   case 'login':
-    include 'login.php';
+    include 'view/login.php';
   
   break;
  
  default:
   include 'view/home.php';
 }
+
+
+
 
 ?>
 

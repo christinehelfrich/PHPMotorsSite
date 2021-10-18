@@ -18,17 +18,9 @@
 <img class="backgroundimg" src="images/site/small_check.jpg" alt="Racing Checkers">
 <div class="whole">
 
-<header>
-    <img class="logo" src="images/site/logo.png" alt="Logo">
-    <span class="myaccount"><a href="view/login.php">My Account</a></span>
-
-    <nav>
-    <?php 
-    echo $navList; 
-    ?>
-    </nav>
-
-</header>
+<?php 
+include "snippets/header.php";
+?>
 
 <main>
     <h1>Welcome to PHP Motors!</h1>
@@ -82,13 +74,9 @@
 
 </main>
 
-<footer>
-
-<hr>
-<p>PHP Motors, All rights reserved.</p>
-<p>All images used are believed to be in "Fair Use". Please notify the autot if any are not and they will be removed.</p>
-<p>Last Updated: <span id="last-updated">xx</span> </p>
-</footer>
+<?php 
+include "snippets/footer.php";
+?>
 </div>
     
 </body>

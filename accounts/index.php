@@ -31,11 +31,18 @@ $action = filter_input(INPUT_POST, 'action');
  }
 
  switch ($action){
- case '':
-  
-  break;
- 
- default:
+    case 'login':
+        include '../view/login.php';
+      
+      break;
+
+      case 'register':
+        include '../view/register.php';
+      
+      break;
+     
+     default:
+      include '../view/home.php';
 
 }
 
