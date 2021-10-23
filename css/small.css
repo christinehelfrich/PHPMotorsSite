@@ -3,7 +3,7 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
-    background-image: url("images\site\checkerboard.jpg");
+
 }
 
 /* HEADER */
@@ -16,7 +16,7 @@ html, body {
 .myaccount a {
     float: right;
     padding: 30px;
-    color: #8d8d8d;
+    color: #3a3a3a;
     font-family: 'PT Mono', monospace;
 }
 
@@ -138,15 +138,38 @@ div.upgrades {
 .container label, button {
     display: block;
     margin-left: 15px;
+    padding: 10px;
 }
 
 .container button {
     padding: 5px;
+    margin: 10px;
 }
 
 input {
     border-radius: 10px 10px 10px 10px;
     padding: 10px;
+}
+
+label, input {
+    display: block;
+    margin: 6px;
+}
+
+.dropdown {
+    z-index: 2;
+}
+
+select {
+    color: #3a3a3a;
+    font-family: 'PT Mono', monospace;
+
+}
+
+form {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 40px;
 }
 
 

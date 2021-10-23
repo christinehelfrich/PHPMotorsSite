@@ -23,31 +23,14 @@ include "snippets/header.php";
 ?>
 
 <main>
-    <h1 class="login">Login</h1>
+    <h1>Add Classification</h1>
 
-    <?php
-      if (isset($message)) {
-       echo $message;
-      }
-    ?>
-
-    <form action="action_page.php" method="post">
-  <div class="imgcontainer">
-  </div>
-
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Login</button>
-
-    <span class="psw"><a href="/phpmotors/accounts/index.php?action=register">Make an account?</a></span>
-  </div>
+    <form method="post" action="/phpmotors/vehicles/index.php">
+    <label for="classificationName">Classification Name:</label>
+    <input type="text" id="classificationName" name="classificationName" required>
+    <input type="submit" name="submit" id="addClassification" value="Add Classification">
+    <input type="hidden" name="action" value="addClassification">
 </form>
-
 </main>
 
 <?php 

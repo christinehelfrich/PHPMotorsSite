@@ -10,9 +10,14 @@ switch ($action){
     $imgsrc = "../images/site/logo.png";
   
   break;
+
+  case 'vehicle-management':
+    $imgsrc = "../images/site/logo.png";
+  
+  break;
  
  default:
- $imgsrc = "images/site/logo.png";
+ $imgsrc = "../images/site/logo.png";
 }
 ?>
 

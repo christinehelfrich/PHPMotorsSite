@@ -40,6 +40,11 @@ $action = filter_input(INPUT_POST, 'action');
     include 'view/login.php';
   
   break;
+
+  case 'vehicle-management':
+    include 'view/vehicle-management.php';
+  
+  break;
  
  default:
   include 'view/home.php';

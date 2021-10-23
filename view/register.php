@@ -24,21 +24,32 @@ include "snippets/header.php";
 
 <main>
 <h1 class="login">Register</h1>
-    <form action="action_page.php" method="post">
+
+<?php
+if (isset($message)) {
+ echo $message;
+}
+?>
+
+<form method="post" action="/phpmotors/accounts/index.php">
 
   <div class="container">
-    <label for="uname"><b>Enter a Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="fname"><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" id="fname" name="clientFirstname" required>
+
+    <label for="lname"><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" id="lname" name="clientLastname" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="name@email.com" id="email" name="clientEmail" required>
 
     <label for="psw"><b>Enter a Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" id="psw" name="clientPassword" required>
 
-    <label for="psw"><b>Re-enter a Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="submit" name="submit" id="regbtn" value="Register">
+    <input type="hidden" name="action" value="register2">
 
-    <button type="submit">Register</button>
-
-    <span class="psw"><a href="login.php">Login to existing account?</a></span>
+    <span class="psw"><a href="/phpmotors/accounts/index.php?action=login">Login to existing account?</a></span>
   </div>
 </form>
 </main>
