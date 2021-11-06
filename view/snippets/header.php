@@ -1,24 +1,23 @@
 
 <?php
-switch ($action){
- case 'register':
-    $imgsrc = "../images/site/logo.png";
-  
-  break;
 
-  case 'login':
-    $imgsrc = "../images/site/logo.png";
-  
-  break;
 
-  case 'vehicle-management':
-    $imgsrc = "../images/site/logo.png";
-  
-  break;
+
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
  
- default:
- $imgsrc = "../images/site/logo.png";
+$url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+
+switch ($url){
+  case "http://localhost/phpmotors/index.php":
+    $imgsrc = "images/site/logo.png";
+    break;
+ 
+    default:
+    $imgsrc = "../images/site/logo.png";
 }
+ 
+
 ?>
 
 <header>
@@ -27,7 +26,7 @@ switch ($action){
 
     <nav>
     <?php 
-    echo $navList; 
+    navFunction($classifications); 
     ?>
     </nav>
 

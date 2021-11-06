@@ -65,7 +65,8 @@ form {
     text-align: right;
 }
 
-form button {
+
+#addClassification {
     grid-column: 2;
 }
 

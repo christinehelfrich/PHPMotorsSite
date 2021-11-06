@@ -22,7 +22,10 @@
 include "snippets/header.php";
 ?>
 
+
+
 <main>
+<span class="myaccount" style="display:block" ><a href="/phpmotors/accounts/index.php?action=vehicle-management">Vehicle Management</a></span>
     <h1>Welcome to PHP Motors!</h1>
     <ul class="DMC">
         <li><strong>DMC Delorean</strong></li>

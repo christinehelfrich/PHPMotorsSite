@@ -26,6 +26,11 @@ include "snippets/header.php";
 
 <main>
     <h1>Add Vehicle</h1>
+    <?php
+      if (isset($message)) {
+       echo $message;
+      }
+    ?>
 
     <form method="post" action="/phpmotors/vehicles/index.php">
 

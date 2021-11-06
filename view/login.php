@@ -31,18 +31,19 @@ include "snippets/header.php";
       }
     ?>
 
-    <form action="action_page.php" method="post">
+    <form method="post" action="/phpmotors/accounts/index.php">
   <div class="imgcontainer">
   </div>
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Username" name="uname" <?php if(isset($clientEmail)){echo "value='$clientEmail'";}  ?> required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
 
     <button type="submit">Login</button>
+    <input type="hidden" name="action" value="login2">
 
     <span class="psw"><a href="/phpmotors/accounts/index.php?action=register">Make an account?</a></span>
   </div>

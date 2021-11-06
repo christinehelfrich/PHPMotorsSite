@@ -8,6 +8,8 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 // Get the vehicle model for use as needed
 require_once '../model/vehicle-model.php';
+// Get the functions library
+require_once '../library/functions.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -16,12 +18,7 @@ $vehicleInfo = getVehicles();
 
 
 // Build a navigation bar using the $classifications array
-$navList = '<ul>';
-$navList .= "<li><a href='/phpmotors/index.php' title='View the PHP Motors home page'>Home</a></li>";
-foreach ($classifications as $classification) {
- $navList .= "<li><a href='/phpmotors/index.php?action=".urlencode($classification['classificationName'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</a></li>";
-}
-$navList .= '</ul>';
+
 
 
 // Build a classifications list using the $classifications array
@@ -33,8 +30,7 @@ foreach ($classifications as $classification) {
 $classificationList .= '</select>';
 
 
-//echo $classificationList;
-//exit;
+
 
 
 
@@ -54,20 +50,62 @@ $action = filter_input(INPUT_POST, 'action');
     break;
 
     case "addClassification":
-        $addClassification = filter_input(INPUT_POST, 'classificationName');
-        addClassification($addClassification);
-        Header('Location: /phpmotors/vehicles/');
+        $Classification = trim(filter_input(INPUT_POST, 'classificationName', FILTER_SANITIZE_STRING));
+    
+        //Header('Location: /phpmotors/vehicles/');
 
-    case "addVehicle":
-        $addMake = filter_input(INPUT_POST, 'make');
-        $addModel = filter_input(INPUT_POST, 'model');
-        $addDescription = filter_input(INPUT_POST, 'description');
-        $addImagePath = filter_input(INPUT_POST, 'imagePath');
-        $addThumbnail = filter_input(INPUT_POST, 'thumbnail');
-        $addPrice = filter_input(INPUT_POST, 'price');
-        $addColor = filter_input(INPUT_POST, 'color');
-        addVehicle($addMake, $addModel, $addDescription, $addImagePath, $addThumbnail, $addPrice, $addColor);
-        Header('Location: /phpmotors/vehicles/');
+                // Check for missing data
+        if (empty($Classification)) {
+          $message = '<p>Please provide information for all empty form fields.</p>';
+          include '../view/add-classification.php';
+          exit; 
+         }
+
+         $classOutcome = addClassification($Classification);
+
+         if($classOutcome === 1) {
+            $message = "<p>Your new classification was added successfully</p>";
+            include '../view/vehicle-management.php';
+            exit;
+         } else {
+            $message = "<p>Sorry, your classification was not added.</p>";
+            include '../view/vehicle-management.php';
+            exit;
+         }
+
+            break;
+
+
+
+    case "addvehicle":
+        $Make = trim(filter_input(INPUT_POST, 'make', FILTER_SANITIZE_STRING));
+        $Model = trim(filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING));
+        $Description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING));
+        $ImagePath = trim(filter_input(INPUT_POST, 'imagePath', FILTER_SANITIZE_STRING));
+        $Thumbnail = trim(filter_input(INPUT_POST, 'thumbnail', FILTER_SANITIZE_STRING));
+        $Price = trim(filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING));
+        $Color = trim(filter_input(INPUT_POST, 'color', FILTER_SANITIZE_STRING));
+    
+                // Check for missing data
+        if (empty($Make) || empty($Model) || empty($Description) || empty($ImagePath) || empty($Thumbnail) || empty($Price) || empty($Color)) {
+          $message = '<p>Please provide information for all empty form fields.</p>';
+          include '../view/add-vehicle.php';
+          exit; 
+         }
+        $vehicleOutcome = addVehicle($Make, $Model, $Description, $ImagePath, $Thumbnail, $Price, $Color);
+
+        if($vehicleOutcome === 1) {
+            $message = "<p>Your new vehicle was added successfully</p>";
+            include '../view/add-vehicle.php';
+            exit;
+         } else {
+            $message = "<p>Sorry, your vehicle was not added.</p>";
+            include '../view/add-vehicle.php';
+            exit;
+         }
+
+            break;
+        //Header('Location: /phpmotors/vehicles/');
 
       
  default:

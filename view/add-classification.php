@@ -24,6 +24,11 @@ include "snippets/header.php";
 
 <main>
     <h1>Add Classification</h1>
+    <?php
+      if (isset($message)) {
+       echo $message;
+      }
+    ?>
 
     <form method="post" action="/phpmotors/vehicles/index.php">
     <label for="classificationName">Classification Name:</label>
