@@ -31,10 +31,12 @@ include "snippets/header.php";
     ?>
 
     <form method="post" action="/phpmotors/vehicles/index.php">
+    <div class="container">
     <label for="classificationName">Classification Name:</label>
     <input type="text" id="classificationName" name="classificationName" required>
     <input type="submit" name="submit" id="addClassification" value="Add Classification">
     <input type="hidden" name="action" value="addClassification">
+    </div>
 </form>
 </main>
 

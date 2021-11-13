@@ -33,7 +33,7 @@ include "snippets/header.php";
     ?>
 
     <form method="post" action="/phpmotors/vehicles/index.php">
-
+    <div class="container">
     <label for="selectclass">Select a Classification:</label>
     <?php echo $classificationList; ?>
 
@@ -60,6 +60,7 @@ include "snippets/header.php";
 
     <input type="submit" name="submit" id="addveh" value="Add Vehicle">
     <input type="hidden" name="action" value="addvehicle">
+    </div>
 </form>
 </main>
 

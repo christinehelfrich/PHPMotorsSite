@@ -59,11 +59,19 @@ input {
     display: block;
 }
 
-form {
+form .container{
     display: grid;
     grid-template-columns: 1fr 1fr;
     text-align: right;
+    grid-gap: 5px;
 }
+
+form .container button, input {
+    grid-column: 2;
+    margin: 5px;
+}
+
+
 
 
 #addClassification {

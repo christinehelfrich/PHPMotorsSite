@@ -26,10 +26,10 @@ include "snippets/header.php";
 <h1 class="login">Register</h1>
 
 <?php
-if (isset($message)) {
- echo $message;
-}
-?>
+if (isset($_SESSION['message'])) {
+  echo $_SESSION['message'];
+ }
+    ?>
 
 <form method="post" action="/phpmotors/accounts/index.php">
 

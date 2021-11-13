@@ -20,6 +20,20 @@ html, body {
     font-family: 'PT Mono', monospace;
 }
 
+.welcome a {
+    float: right;
+    color: #3a3a3a;
+    padding: 20px;
+    font-family: 'PT Mono', monospace;
+}
+
+header span {
+    float: right;
+    padding: 7px;
+    color: #3a3a3a;
+    font-family: 'PT Mono', monospace;
+}
+
 /* NAV */
 
 nav ul {
@@ -134,11 +148,17 @@ div.upgrades {
 .container {
     padding-left: 15px;
 }
+form {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 40px;
+}
 
 .container label, button {
     display: block;
     margin-left: 15px;
     padding: 10px;
+    padding-left: 15px;
 }
 
 .container button {
@@ -149,11 +169,13 @@ div.upgrades {
 input {
     border-radius: 10px 10px 10px 10px;
     padding: 10px;
+    margin: 0 auto;
 }
 
 input {
     display: block;
     margin: 6px;
+
 }
 
 .dropdown {
@@ -166,17 +188,32 @@ select {
 
 }
 
-form {
-    margin: 0 auto;
-    max-width: 600px;
-    padding: 40px;
-    text-align: center;
-}
+
 
 span.pswreq {
     display: inline;
     font-family: 'PT Mono', monospace;
 }
+
+/* ADMIN */
+
+ul.admin-list li {
+    list-style: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+ul.admin-list li p {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+#veh-crtl a {
+    color: #3a3a3a;
+    padding: 20px;
+    font-family: 'PT Mono', monospace;
+}
+
+
 
 
 
