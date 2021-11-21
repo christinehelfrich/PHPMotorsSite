@@ -66,6 +66,11 @@ form .container{
     grid-gap: 5px;
 }
 
+form label {
+    text-align: right;
+    grid-column: 1;
+}
+
 form .container button, input {
     grid-column: 2;
     margin: 5px;

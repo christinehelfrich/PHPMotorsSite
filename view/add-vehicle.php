@@ -1,3 +1,16 @@
+<?php 
+// Build a classifications list using the $classifications array
+$classificationList = "<select name='classificationId'>";
+$classificationList .= "<option id='classificationId' value='select'>Select a Classification</option>";
+foreach ($classifications as $classification) {
+    $classificationList .= "<option value=".urlencode($classification['classificationId'])."' title='View our $classification[classificationName] product line'>$classification[classificationName]</option>";
+}
+$classificationList .= '</select>';
+
+// Build the car classification option list
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +67,9 @@ include "snippets/header.php";
 
     <label for="price">Price:</label>
     <input type="text" id="price" name="price" required>
+
+    <label for="stock">Stock:</label>
+    <input type="text" id="stock" name="stock" required>
 
     <label for="color">Color:</label>
     <input type="text" id="color" name="color" required>

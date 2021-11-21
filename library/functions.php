@@ -1,5 +1,7 @@
 <?php
 
+
+
 function checkEmail($clientEmail){
  $valEmail = filter_var($clientEmail, FILTER_VALIDATE_EMAIL);
  return $valEmail;
@@ -23,5 +25,23 @@ function checkEmail($clientEmail){
     
       echo $navList;
     } 
+
+
+
+
+    // Build the classifications select list 
+
+
+    function buildClassificationList($classifications){ 
+      $classificationList = '<select name="classificationId" class="test3" id="classificationList">'; 
+      $classificationList .= "<option>Choose a Classification</option>"; 
+      foreach ($classifications as $classification) { 
+       $classificationList .= "<option value='$classification[classificationId]'>$classification[classificationName]</option>"; 
+      } 
+      $classificationList .= '</select>'; 
+      return $classificationList; 
+     }
+   
+
 
 ?>

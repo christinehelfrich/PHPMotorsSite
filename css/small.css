@@ -71,6 +71,12 @@ h1 {
     font-size: 25px;
 }
 
+h2 {
+    font-family: 'PT Mono', monospace;
+    font-size: 18px;
+
+}
+
 p, li, label, .container span a, button {
     font-family: 'PT Mono', monospace;
     font-size: 12px;

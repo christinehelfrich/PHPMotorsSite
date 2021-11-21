@@ -155,7 +155,71 @@ $action = filter_input(INPUT_POST, 'action');
           header('Location: /phpmotors/vehicles/');
           exit;
 
-     
+        case 'client-update':
+          $clientId = $_SESSION['clientData']['clientId'];
+          $clientInfo = getClientItemInfo($clientId);
+          if(count($clientInfo)<1){
+           $message = 'Sorry, no vehicle information could be found.';
+          }
+          include '../view/client-update.php';
+          exit;         
+          break;
+
+        case 'updateClient':
+          $clientFirstname = filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING);
+          $clientLastname = filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING);
+          $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_STRING);
+          $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+  
+          if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) ) {
+         $message = '<p>Please complete all information for the account! Double check the email.</p>';
+           include '../view/client-update.php';
+        exit;
+       }
+       
+       $updateResult = updateAccount($clientFirstname, $clientLastname, $clientEmail, $clientId);
+       if ($updateResult) {
+        $message = "<p class='notice'>Congratulations, $clientFirstname $clientLastname, your account was successfully updated.</p>";
+          $_SESSION['message'] = $message;
+          $_SESSION['clientData']['clientFirstname'] = $clientFirstname;
+          $_SESSION['clientData']['clientLastname'] = $clientLastname;
+          $_SESSION['clientData']['clientEmail'] = $clientEmail;
+          include '../view/admin.php';
+          exit;
+       } else {
+          $message = "<p class='notice'>Error. Sorry, $clientFirstname $clientLastname, your account was not updated.</p>";
+          include '../view/admin.php';
+           exit;
+          }
+       break;
+
+       case 'password-change':
+        $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING));
+        $clientId = $_SESSION['clientData']['clientId'];
+        $clientFirstname = $_SESSION['clientData']['clientFirstname'];
+        $clientLastname = $_SESSION['clientData']['clientLastname'];
+        $clientEmail = $_SESSION['clientData']['clientEmail'];
+
+
+        $checkPassword = checkPassword($clientPassword);
+                 // Hash the checked password
+        $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+        $passwordOutcome = updatePassword($hashedPassword, $clientId);
+        if ($passwordOutcome) {
+          $message = "<p class='notice'>Congratulations, $clientFirstname $clientLastname, your password was successfully updated.</p>";
+            $_SESSION['message'] = $message;
+            include '../view/admin.php';
+            exit;
+         } else {
+            $message = "<p class='notice'>Error. Sorry, $clientFirstname $clientLastname, your password was not updated.</p>";
+            include '../view/admin.php';
+             exit;
+            }
+
+
+        break;
+
+    
      default:
       include '../view/home.php';
 
