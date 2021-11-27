@@ -16,3 +16,5 @@ Commit 5: https://youtu.be/lA69yIag-Wg
 Commit 6: https://youtu.be/4B24Fba5pGI
 
 Commit 7: https://youtu.be/bQ7QFlkTuhU
+
+Commit 8: https://youtu.be/_kGszYGfpek
