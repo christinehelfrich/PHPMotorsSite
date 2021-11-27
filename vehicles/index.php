@@ -175,25 +175,49 @@ $action = filter_input(INPUT_POST, 'action');
          break;
 
    case 'deleteVehicle':
-      $invMake = filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_STRING);
-$invModel = filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_STRING);
-$invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
+            $invMake = filter_input(INPUT_POST, 'invMake', FILTER_SANITIZE_STRING);
+      $invModel = filter_input(INPUT_POST, 'invModel', FILTER_SANITIZE_STRING);
+      $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
 
-$deleteResult = deleteVehicle($invId);
-if ($deleteResult) {
-	$message = "<p class='notice'>Congratulations the, $invMake $invModel was	successfully deleted.</p>";
-	$_SESSION['message'] = $message;
-	header('location: /phpmotors/vehicles/');
-	exit;
-} else {
-	$message = "<p class='notice'>Error: $invMake $invModel was not
-deleted.</p>";
-	$_SESSION['message'] = $message;
-	header('location: /phpmotors/vehicles/');
-	exit;
-}
-				
-      break;
+      $deleteResult = deleteVehicle($invId);
+      if ($deleteResult) {
+      	$message = "<p class='notice'>Congratulations the, $invMake $invModel was	successfully deleted.</p>";
+      	$_SESSION['message'] = $message;
+      	header('location: /phpmotors/vehicles/');
+      	exit;
+      } else {
+      	$message = "<p class='notice'>Error: $invMake $invModel was not
+      deleted.</p>";
+      	$_SESSION['message'] = $message;
+      	header('location: /phpmotors/vehicles/');
+      	exit;
+      }
+
+            break;
+
+
+
+      case 'classification':
+         $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
+         $vehicles = getVehiclesByClassification($classificationName);
+         if(!count($vehicles)){
+          $message = "<p class='notice'>Sorry, no $classificationName could be found.</p>";
+         } else {
+          $vehicleDisplay = buildVehiclesDisplay($vehicles);
+         }
+         include '../view/classification.php';
+         break;
+
+      case 'vehicle-detail':
+         $invModel = filter_input(INPUT_GET, 'invModel', FILTER_SANITIZE_STRING);
+         $details = getDetailsByVehicles($invModel);
+         if(!count($details)){
+            $message = "<p class='notice'>Sorry, no $invModel details could be found.</p>";
+           } else {
+            $detailDisplay = buildVehiclesDetailDisplay($details);
+           }
+         include '../view/vehicle-detail.php';
+         break;
       
  default:
 
