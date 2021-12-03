@@ -256,7 +256,7 @@ li img {
        max-width: 100%;
    }
 
-   #det-display img {
+   #det-display img.primary {
     max-width: 100%;
     margin: 10px;
 }
@@ -267,6 +267,18 @@ li img {
     font-family: 'PT Mono', monospace;
     font-size: 12px;
     padding: 5px;
+}
+
+.secondary-tn {
+    display: inline-block;
+    margin: 10px;
+}
+
+.secondary-tn:hover {
+    width: 250px;
+    -webkit-box-shadow: 0px 0px 30px -3px #000000; 
+    box-shadow: 0px 0px 30px -3px #000000;
+
 }
 
 

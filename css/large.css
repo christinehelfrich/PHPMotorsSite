@@ -112,7 +112,7 @@ form .container button, input {
 
 #det-display div{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 80px 50px 200px;
     grid-gap: 5px;
 }
@@ -132,10 +132,17 @@ form .container button, input {
     grid-row: 3;
 }
 
-#det-display div img {
+#det-display div img.primary {
     grid-column: 2;
     grid-row: 1/3;
-    max-height: 330px;
+    max-width: 100%;
+}
+
+img.secondary-tn {
+    grid-column: 3;
+    grid-row: 1/3;
+    max-width: 100%;
+
 }
 
 }

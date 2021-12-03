@@ -168,6 +168,7 @@ function getInvItemInfo($invId){
    }
 
 
+
    function getDetailsByVehicles($invModel){
     $db = phpmotorsConnect();
     $sql = 'SELECT * FROM inventory WHERE invId IN (SELECT invId FROM carclassification WHERE invModel = :invModel)';
@@ -179,4 +180,26 @@ function getInvItemInfo($invId){
     return $details;
    }
 
+//       // Get information for all vehicles
+function getVehiclesId(){
+	$db = phpmotorsConnect();
+	$sql = 'SELECT invId, invMake, invModel FROM inventory';
+	$stmt = $db->prepare($sql);
+	$stmt->execute();
+	$invInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$stmt->closeCursor();
+	return $invInfo;
+}
+
+//       // Get information for all images
+function getImagesByVehicles($invId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT * FROM images WHERE images.imgPrimary = 1 AND invId IN (SELECT invId FROM inventory WHERE invId = :invId)';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
+    $stmt->execute();
+    $imgDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $imgDetails;
+   }
 ?>

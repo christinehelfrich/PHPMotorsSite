@@ -13,6 +13,7 @@ require_once '../model/main-model.php';
 require_once '../model/vehicle-model.php';
 // Get the functions library
 require_once '../library/functions.php';
+require_once '../model/uploads-model.php';
 
 
 // Get the array of classifications

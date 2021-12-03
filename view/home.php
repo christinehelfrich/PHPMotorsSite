@@ -33,7 +33,7 @@ include "snippets/header.php";
         <li>Superman Doors</li>
         <li>Fuzzy Dice!</li>
 </ul>
-    <img class="carpic" src="images/delorean.jpg" alt="Delorean Photo">
+    <img class="carpic" src="images/vehicles/delorean.jpg" alt="Delorean Photo">
     <div>
     <img class="owntoday" src="images/site/own_today.png" alt="Own Today Button">
     </div>
