@@ -63,12 +63,17 @@ function checkEmail($clientEmail){
      }
 
 
+
+
      function buildVehiclesDetailDisplay($details){
-      $dv = '<ul id="det-display">';
+      $dv = '<div id="det-display">';
       foreach ($details as $detail) {
        $invId = "$detail[invId]";
         $thumbnails = getThumbnailsByVehicle($invId);
-        $tnPath = $thumbnails[0]['imgPath'];
+        if(isset($thumbnails[0]['imgPath'])){
+          $tnPath = $thumbnails[0]['imgPath'];
+        };
+        //$tnPath = $thumbnails[0]['imgPath'];
        $dv .= '<div>';
        $dv .= "<h1>$detail[invMake] $detail[invModel]</h1>";
        $dv .= "<h2>$$detail[invPrice]</h2>";
@@ -82,9 +87,68 @@ function checkEmail($clientEmail){
        $dv .= '<hr>';
        $dv .= '</div>';
       }
-      $dv .= '</ul>';
+      $dv .= '</div>';
       return $dv;
      }
+
+     function buildReviewsDisplay($reviews){
+      $dv = '<h2>Customer Reviews</h2>';
+      if(isset($_SESSION['clientData']['clientFirstname'])){
+        $firstname = $_SESSION['clientData']['clientFirstname'];
+        $dv .= '<h3>Add a Review</h3>';
+        $dv .= '<form method="post" class="review-form" action="/phpmotors/reviews/index.php">';
+        $dv .= '<label for="screenName">Screen Name:</label>';
+        $dv .= "<input type='text' id='screenName' name='screenName' value='$firstname' readonly required>";
+        $dv .= '<label for="reviewText">Review:</label>';
+        $dv .= '<input type="text" id="reviewText" name="reviewText" required>';
+        $dv .= '<input type="submit" name="submit" id="addReview" value="Add Review">';
+        $dv .= '<input type="hidden" name="action" value="addReview">';
+        $dv .= '</form>';
+      }
+      else{
+        $dv .= '<p class="bethefirst">You must be logged in to add a review</p>';
+       
+      }
+      if(!count($reviews)) {
+        $dv .= '<p class="bethefirst">Be the first to review this!</p>';
+      } else {
+        foreach($reviews as $review) {
+          $reviewText = $review['reviewText'];
+          $clientId = $review['clientId'];
+          $reviewName1 = getClientNameById($clientId);
+          $reviewName = $reviewName1[0]['clientFirstName'];
+          $dv .= "<h3>$reviewName reviewed: </h3>";
+          $dv .= "<p>'$reviewText'</p>";
+
+       }
+      
+
+      }
+      return $dv;
+     }
+
+
+     function buildReviewsAdminDisplay($reviewsCL){
+      $dv = '<h2>Your Reviews</h2>';
+      //var_dump($reviewsCL);
+      //exit;
+      foreach($reviewsCL as $reviewCL) {
+        $reviewId = $reviewCL['reviewId'];
+        $reviewText = $reviewCL['reviewText'];
+        $invId = $reviewCL['invId'];
+        $reviewDate = $reviewCL['reviewDate'];
+        $item = getInvItemInfo($invId);
+        $make = $item['invMake'];
+        $model = $item['invModel'];
+
+        $dv .= "<p><strong>$make $model (made on $reviewDate):</strong>(id:<span id='reviewId'>$reviewId</span>) $reviewText</p>";
+        $dv .= "<p><a href='/phpmotors/reviews/index.php?action=delrevs&reviewId=".urlencode($reviewCL['reviewId'])."'>delete</a> <a href='/phpmotors/reviews/index.php?action=modrevs&reviewId=".urlencode($reviewCL['reviewId'])."'>modify</a></p>";
+
+     }
+
+      return $dv;
+     }
+     
 
      /* * ********************************
 *  Functions for working with images

@@ -145,4 +145,30 @@ img.secondary-tn {
 
 }
 
+
+form.review-form {
+    max-width: 100%;
+}
+
+form.review-form label {
+    margin-right: 5px;
+}
+
+input#screenName {
+    display: inline;
+    margin-right: 1em;
+}
+
+
+input#reviewText {
+    display: inline;
+    min-height: 1px;
+    margin-right: 1em;
+}
+
+input#addReview {
+    display: inline;
+}
+
+
 }

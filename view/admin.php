@@ -67,6 +67,14 @@ if($_SESSION['clientData']['clientLevel'] > 1) {
 }
 ?>
 
+<h2>Review Management</h2>
+    <p>You may modify your reviews here:</p>
+
+    
+    <?php if(isset($reviewAdminDisplay)){
+ echo $reviewAdminDisplay;
+} ?>
+
 
 
 

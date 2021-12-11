@@ -24,7 +24,6 @@ include "snippets/header.php";
 
 <main>
 
-<main>
 
 <h1>Vehicle Details</h1>
 <?php if(isset($message)){
@@ -37,10 +36,18 @@ include "snippets/header.php";
 } ?>
 
 
-</main>
+
+<?php if(isset($reviewDisplay)){
+ echo $reviewDisplay;
+} ?>
+
+
 
 
 </main>
+
+
+
 
 <?php 
 include "snippets/footer.php";

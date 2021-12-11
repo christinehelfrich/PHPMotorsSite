@@ -77,6 +77,12 @@ h2 {
 
 }
 
+h3 {
+    font-family: 'PT Mono', monospace;
+    font-size: 16px;
+
+}
+
 p, li, label, .container span a, button {
     font-family: 'PT Mono', monospace;
     font-size: 12px;
@@ -217,6 +223,27 @@ ul.admin-list li p {
     color: #3a3a3a;
     padding: 20px;
     font-family: 'PT Mono', monospace;
+}
+
+form.review-form {
+    border: 1px solid black;
+}
+
+input#screenName {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+p.bethefirst {
+    background-color: rgb(245, 122, 122);
+    padding: 15px;
+    color: white;
+}
+
+input#reviewText {
+    min-width: 15em;
+    min-height: 5em;
+    margin-bottom: 10px;
 }
 
 

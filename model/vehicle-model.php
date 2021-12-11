@@ -6,6 +6,7 @@ Vehicles Model
 
 // Input new car classification
 
+
 function getVehicles(){
     // Create a connection object from the phpmotors connection function
     $db = phpmotorsConnect(); 
@@ -56,7 +57,7 @@ function getVehicles(){
    }
 
 
-
+ 
 
 function addClassification($classificationName){
     // Create a connection object using the phpmotors connection function

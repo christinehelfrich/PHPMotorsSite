@@ -14,6 +14,7 @@ require_once '../model/vehicle-model.php';
 // Get the functions library
 require_once '../library/functions.php';
 require_once '../model/uploads-model.php';
+require_once '../model/reviews-model.php';
 
 
 // Get the array of classifications
@@ -212,11 +213,24 @@ $action = filter_input(INPUT_POST, 'action');
       case 'vehicle-detail':
          $invModel = filter_input(INPUT_GET, 'invModel', FILTER_SANITIZE_STRING);
          $details = getDetailsByVehicles($invModel);
+         $reviews = getReviewsByVehicle($invModel);
+         //$invId = $_SESSION['details'][0]['invId'];
+         //var_dump($details[0]['invModel']);
+         //exit;
+         $invModel = $details[0]['invModel'];
+
+
          if(!count($details)){
             $message = "<p class='notice'>Sorry, no $invModel details could be found.</p>";
            } else {
             $detailDisplay = buildVehiclesDetailDisplay($details);
+            $reviewDisplay = buildReviewsDisplay($reviews);
+
+
+ 
            }
+
+           $_SESSION['details'] = $details;
          include '../view/vehicle-detail.php';
          break;
       

@@ -13,6 +13,8 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 // Get the functions library
 require_once '../library/functions.php';
+require_once '../model/reviews-model.php';
+require_once '../model/vehicle-model.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -23,7 +25,7 @@ $classifications = getClassifications();
 // Build a navigation bar using the $classifications array
 
 
- 
+
 
 
 
@@ -139,16 +141,27 @@ $action = filter_input(INPUT_POST, 'action');
           $_SESSION['clientData'] = $clientData;
           // Send them to the admin view
           include '../view/admin.php';
-          exit;
+          exit; 
+          break;
 
         case 'adminpage':
+
+          $clientId = $_SESSION['clientData']['clientId'];
+          $reviewsCL = getReviewsByClient($clientId);
+          $reviewAdminDisplay = buildReviewsAdminDisplay($reviewsCL);
+          //var_dump($reviewAdminDisplay);
+          //exit;
+
+
           include '../view/admin.php';
           exit;
+          break;
 
         case 'logout':
           unset($_SESSION['clientData']['clientFirstname']);
           session_destroy();
           header('Location: /phpmotors/');
+          $_SESSION['loggedin'] = FALSE;
           exit;
 
         case 'vehicles':
